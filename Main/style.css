@@ -1,0 +1,462 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+:root {
+  --bg: #120e0a;
+  --panel: #181209;
+  --panel-2: #1e1608;
+  --amber: #ffb627;
+  --amber-dim: #7a5a24;
+  --amber-dim2: #4a3a1e;
+  --text: #f3e6c8;
+  --text-dim: #a0906a;
+  --teal: #5fb3ad;
+  --danger: #e8654a;
+  --shadow: #000;
+  font-size: 16px;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "IBM Plex Mono", monospace;
+  overflow: hidden;
+}
+
+#booting {
+  position: fixed;
+  inset: 0;
+  background: #0b0805;
+  color: #c9a75a;
+  padding: 36px 40px;
+  font-size: 14px;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  z-index: 50;
+}
+
+#booting.ok {
+  color: #6fbf73;
+}
+
+#booting.warn {
+  color: var(--amber);
+}
+
+#booting.dim {
+  color: #6e5a37;
+}
+
+#booting.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background: var(--amber);
+  vertical-align: -2px;
+  animation: blink 1s steps(1) infinite;
+}
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+#booting.hide {
+  display: none;
+}
+
+.crt::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.022) 0px,
+    rgba(255, 255, 255, 0.022) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  z-index: 40;
+  mix-blend-mode: overlay;
+}
+
+.crt::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.65);
+  z-index: 41;
+}
+
+#app {
+  display: none;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#app.show {
+  display: flex;
+}
+
+.judul {
+  flex: 0 0 30px;
+  background: #0c0906;
+  border-bottom: 1px solid var(--amber-dim2);
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  font-size: 12px;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+}
+
+.judul .dot {
+  display: flex;
+  gap: 6px;
+  margin-right: 14px;
+}
+
+.judul .dota {
+  background: var(--danger);
+  opacity: 0.55;
+}
+
+.judul .dotb {
+  background: var(--amber);
+  opacity: 0.55;
+}
+
+.judul .dotc {
+  background: var(--teal);
+  opacity: 0.55;
+}
+
+.judul .path {
+  flex: 1;
+  text-align: center;
+}
+
+.judul .clock {
+  font-variant-numeric: tabular-nums;
+  color: var(--text-dim);
+}
+
+.pline {
+  flex: 0 0 auto;
+  padding: 8px 20px 6px;
+  font-size: 13px;
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--amber-dim2);
+  background: var(--bg);
+}
+
+.pline .u {
+  color: var(--teal);
+}
+
+.pline .p {
+  color: var(--amber);
+}
+
+.pline .c {
+  display: inline-block;
+  width: 7px;
+  height: 13px;
+  background: var(--amber);
+  vertical-align: -2px;
+  animation: blink 1s steps(1) infinite;
+  margin-left: 2px;
+}
+
+.workspace {
+  flex: 1;
+  overflow-y: auto;
+  padding: 18px 20px 90px;
+}
+
+.pa {
+  border: 1px solid var(--amber-dim2);
+  background: var(--panel);
+  margin-bottom: 18px;
+}
+
+.pa-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--amber-dim2);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--amber);
+}
+
+.pa-head .rule {
+  flex: 1;
+  color: var(--amber-dim);
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.pa-body {
+  padding: 18px 22px 22px;
+}
+
+.field {
+  margin-bottom: 16px;
+}
+
+.field label {
+  display: block;
+  font-size: 12.5px;
+  color: var(--text-dim);
+  margin-bottom: 6px;
+}
+
+.field label::before {
+  content: "";
+  color: var(--amber-dim);
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  background: #0d0a06;
+  border: 1px solid var(--amber-dim2);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  padding: 9px 12px;
+  outline: none;
+  border-radius: 0;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+input[type="text"]::placeholder {
+  color: #5a4e35;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 1px var(--teal) inset;
+}
+
+select {
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--amber-dim) 50%),
+    linear-gradient(135deg, var(--amber-dim) 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) center,
+    calc(100% - 13px) center;
+  background-size:
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+}
+
+.radiogroup {
+  display: flex;
+  gap: 26px;
+  padding-top: 2px;
+}
+
+.radiogroup label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.radiogroup label::before {
+  content: none;
+}
+
+.radiogroup input {
+  display: none;
+}
+
+.radiogroup .box {
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--amber-dim);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  color: var(--amber);
+  flex: 0 0 auto;
+}
+
+.radiogroup input:checked + .box::after {
+  content: "●";
+}
+
+.radiogroup input:checked ~ span.txt {
+  color: var(--amber);
+  flex: 0 0 auto;
+}
+
+.btnbar {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.kbtn {
+  background: var(--amber);
+  color: #1a1204;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 13.5px;
+  padding: 9px 20px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+}
+
+.kbtn-g:hover {
+  color: var(--text);
+  border-color: var(--amber-dim);
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.hint b {
+  color: var(--amber-dim);
+  font-weight: 400;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+
+thead th {
+  text-align: left;
+  background: var(--amber);
+  color: #1a1204;
+  font-weight: 600;
+  padding: 8px 12px;
+  letter-spacing: 0.02em;
+}
+
+tbody td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--amber-dim2);
+  color: var(--text);
+}
+
+tbody tr:hover {
+  background: #241b0d;
+}
+
+tbody tr.editing {
+  background: #2a2412;
+}
+
+.tag {
+  border: 1px solid var(--teal);
+  color: var(--teal);
+  padding: 1px 7px;
+  font-size: 11.5px;
+}
+
+.actions button:hover {
+  color: var(--amber);
+}
+
+.actions button.del:hover {
+  color: var(--danger);
+}
+
+.actions button.k {
+  color: var(--amber-dim);
+}
+
+.empty {
+  padding: 26px 22px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+
+.statusbar {
+  display: flex;
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  height: 34px;
+  background: #0c0906;
+  border-top: 1px solid var(--amber-dim2);
+  padding: 0 14px;
+  gap: 18px;
+  font-size: 12.5px;
+  z-index: 30;
+}
+
+.fk-group {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.fk {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-dim);
+}
+
+.fk .k {
+  background: var(--amber-dim2);
+  color: var(--amber);
+  padding: 1px 6px;
+  font-size: 11.5px;
+}
+
+.statusbar .fill {
+  flex: 1;
+}
+
+.statusbar .count {
+  color: var(--text-dim);
+}
+
+.statusbar .count b {
+  color: var(--amber);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--amber-dim2);
+}

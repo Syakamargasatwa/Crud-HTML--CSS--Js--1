@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Tugas dpk</title>
+  </head>
+  <body class="crt">
+    <div id="booting"></div>
+    <div id="app">
+      <div class="judul">
+        <div class dot>
+          <span class="dota"></span>
+          <span class="dotb"></span>
+          <span class="dotc"></span>
+        </div>
+        <div class="path">letoris — pendaftaran-siswa — 118x34</div>
+        <div class="clock" id="jam">--:--</div>
+      </div>
+
+      <div class="pline">
+        <span class="u">user@smkletris2</span>
+        <span class="p">~/letoris</span>$ ./form pendafstaran-siswa
+      </div>
+      <div class="workspace">
+        <div class="pa">
+          <div class="pa-head">
+            DATA SISWA
+            <span class="rule"
+              >───────────────────────────────────────────────</span
+            >
+          </div>
+          <div class="pa-body">
+            <div class="field">
+              <label for="">Nama Lengkap</label>
+              <input type="text" id="f-nama" placeholder="tulis nama siswa_" />
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="">Kelas</label>
+                <div class="radiogroup" id="f-kelas">
+                  <label>
+                    <input type="radio" name="kelas" value="X" />
+                    <span class="box"></span>
+                    <span class="txt">X</span>
+                  </label>
+
+                  <label>
+                    <input type="radio" name="kelas" value="XI" />
+                    <span class="box"></span>
+                    <span class="txt">XI</span>
+                  </label>
+
+                  <label>
+                    <input type="radio" name="kelas" value="XII" />
+                    <span class="box"></span>
+                    <span class="txt">XII</span>
+                  </label>
+                </div>
+              </div>
+              <div class="field">
+                <label for="">Jenis Kelamin</label>
+                <div class="radiogroup" id="f-jk">
+                  <label>
+                    <input type="radio" name="jk" value="Laki-laki" />
+                    <span class="box"></span>
+                    <span class="txt">Laki-laki</span>
+                  </label>
+                  <label>
+                    <input type="radio" name="jk" value="Perempuan" />
+                    <span class="box"></span>
+                    <span class="txt">Perempuan</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="field">
+              <label for="">Alamat</label>
+              <input
+                type="text"
+                id="f-alamat"
+                placeholder="tulis alamat siswa_"
+              />
+            </div>
+            <div class="row2">
+              <div class="field">
+                <label for="">Jurusan</label>
+                <select id="f-jurusan">
+                  <option>-- pilih jurusan --</option>
+                  <option>PPLG</option>
+                  <option>BDP</option>
+                  <option>TJKT</option>
+                  <option>AKL</option>
+                  <option>DKV</option>
+                  <option>MPLB</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="">Ekstrakurikuler</label>
+                <select id="f-ekskul">
+                  <option>-- pilih ekstrakurikuler --</option>
+                  <option>Volly</option>
+                  <option>Basket</option>
+                  <option>Pramuka</option>
+                  <option>Paskibra</option>
+                  <option>RPL</option>
+                </select>
+              </div>
+            </div>
+            <div class="btnbar">
+              <button class="kbtn" id="btn-submit">[ F1 ] Tambah Data</button>
+              <button class="kbtn-g" id="btn-cancel" style="display: none">
+                [ ESC ] Batal Edit
+              </button>
+              <span class="hint" id="form-hint"
+                >isi kolom lalu tekan <b>F1</b> atau klik tombol untuk
+                menyimpan</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="pa">
+          <div class="pa-head">
+            DAFTAR SISWA
+            <span class="rule"
+              >───────────────────────────────────────────────</span
+            >
+          </div>
+          <div id="table-wrap"></div>
+        </div>
+      </div>
+      <div class="statusbar">
+        <div class="fk-group" id="fk-group"></div>
+        <div class="fill"></div>
+        <div class="count"><b id="count">0</b> siswa terdaftar</div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
